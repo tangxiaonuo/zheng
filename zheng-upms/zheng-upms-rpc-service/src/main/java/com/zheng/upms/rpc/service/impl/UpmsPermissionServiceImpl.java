@@ -45,9 +45,9 @@ public class UpmsPermissionServiceImpl extends BaseServiceImpl<UpmsPermissionMap
     public JSONArray getTreeByRoleId(Integer roleId) {
         // 角色已有权限
         List<UpmsRolePermission> rolePermissions = upmsApiService.selectUpmsRolePermisstionByUpmsRoleId(roleId);
-
+        // 新建JSON数组
         JSONArray systems = new JSONArray();
-        // 系统
+        // 根据条件 状态1,升序查询所有系统并且放入数组
         UpmsSystemExample upmsSystemExample = new UpmsSystemExample();
         upmsSystemExample.createCriteria()
                 .andStatusEqualTo((byte) 1);
@@ -61,7 +61,7 @@ public class UpmsPermissionServiceImpl extends BaseServiceImpl<UpmsPermissionMap
             node.put("open", true);
             systems.add(node);
         }
-
+        
         if (systems.size() > 0) {
             for (Object system: systems) {
                 UpmsPermissionExample upmsPermissionExample = new UpmsPermissionExample();
