@@ -78,6 +78,7 @@ public class UpmsPermissionServiceImpl extends BaseServiceImpl<UpmsPermissionMap
                 // 目录
                 JSONArray folders = new JSONArray();
                 for (UpmsPermission upmsPermission: upmsPermissions) {
+                    // pid(所属上级)  type(类型(1:目录,2:菜单,3:按钮))
                     if (upmsPermission.getPid().intValue() != 0 || upmsPermission.getType() != 1) {
                         continue;
                     }
